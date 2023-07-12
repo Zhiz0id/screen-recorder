@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=info.you_ra.screen-recorder
+Exec=/usr/bin/info.you_ra.screen-recorder
+Name=Screen recorder
+Name[ru]=Запись экрана
+
+[X-Application]
+Permissions=Audio;Microphone;RemovableMedia;Videos;Internet
+OrganizationName=info.you_ra
+ApplicationName=screen-recorder
+ExecDBus=/usr/bin/info.you_ra.screen-recorder
