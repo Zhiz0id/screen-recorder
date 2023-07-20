@@ -37,17 +37,29 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import ScreenRecorder.Interfacer 1.0
 
-CoverBackground {
-    objectName: "defaultCover"
+Cover {
 
-    CoverPlaceholder {
-        objectName: "placeholder"
-        text: qsTr("Screen recorder")
-        icon {
-            source: Qt.resolvedUrl("../icons/screen-recorder.svg")
-            sourceSize { width: icon.width; height: icon.height }
-        }
-        forceFit: true
+Interfacer {
+
+    id: screenrecorderInterface
+}
+    Rectangle {
+        anchors.fill: parent
+        color: "red"
+    }
+    CoverActionList {
+            CoverAction {
+                iconSource: "image://theme/icon-cover-record"
+                onTriggered: screenrecorderInterface.start()
+            }
+
+            CoverAction {
+                iconSource: "image://theme/icon-cover-cancel"
+                onTriggered: screenrecorderInterface.quit()
+            }
+
     }
 }
+

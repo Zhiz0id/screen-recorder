@@ -1,1 +1,6 @@
 build*
+.gitignore
+.DS_Store
+CMakeUserPresets.json
+Builds/
+Cache/

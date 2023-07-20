@@ -1,7 +1,7 @@
 %define __provides_exclude_from ^%{_datadir}/%{name}/.*$
 %define __requires_exclude ^.*$
 
-Name:       info.you_ra.screen-recorder
+Name:       info.you_ra.screen_recorder
 
 Summary:    Screen recorder application
 Version:    0.0.1
@@ -20,14 +20,15 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 BuildRequires:  cmake
-BuildRequires:  ffmpeg-devel
-BuildRequires:  libvncserver-devel
+#BuildRequires:  ffmpeg-devel
+#BuildRequires:  libvncserver-devel
 
 %description
 Screen recorder application
 
 %prep
 %setup -q -n %{name}-%{version}
+#cd FFmpegBuild && cmake .
 
 %build
 %cmake
@@ -41,7 +42,7 @@ desktop-file-install --delete-original         --dir %{buildroot}%{_datadir}/app
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}
+%{_bindir}/%{name}
 %defattr(644,root,root,-)
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop

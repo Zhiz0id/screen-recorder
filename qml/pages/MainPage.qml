@@ -47,39 +47,65 @@ Page {
         id: screenrecorderInterface
         //running: Qt.application.state === Qt.ApplicationActive
     }
-    PageHeader {
-        objectName: "pageHeader"
-        title: qsTr("Screen recorder")
-        extraContent.children: [
-            IconButton {
-                objectName: "aboutButton"
-                icon.source: "image://theme/icon-m-about"
-                anchors.verticalCenter: parent.verticalCenter
+    SilicaFlickable{
+        //id: dockTools
+        //width: parent.width
+        anchors.fill: parent
+        contentHeight: column.height
+        //height: 100
+        //open: true
+        //dock: Dock.Bottom
 
-                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            Column{
+            id: column
+            width: parent.width
+            spacing: Theme.paddingMedium
+            PageHeader {
+                objectName: "pageHeader"
+                title: qsTr("Screen recorder")
+                extraContent.children: [
+                    IconButton {
+                        objectName: "aboutButton"
+                        icon.source: "image://theme/icon-m-about"
+                        anchors.verticalCenter: parent.verticalCenter
+        
+                        onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+                    }
+                ]
             }
-        ]
-    }
 
-    DockedPanel{
-        id: dockTools
-        width: parent.width
-        height: 100
-        open: true
-        dock: Dock.Bottom
+            SectionHeader {
+              text: qsTr("Recording")
+            }
 
-            Row{
-            id: dockRow
             IconButton {
                 id: startButton
-                icon.source: "image://theme/icon-m-keyboard"
-                enabled: true
+                icon.source: "../icons/record.png"
+                enabled: true //screenrecorderInterface.isFinished()
                 onClicked: {
                     console.log("start");
                     screenrecorderInterface.start();
                 }
 
             }
+            IconButton {
+                id: stopButton
+                icon.source: "../icons/stop.png"
+                enabled: true //screenrecorderInterface.isRunning()
+                onClicked: {
+                    console.log("quit");
+                    screenrecorderInterface.quit();
+                }
+
+            }
+
+            PullDownMenu {
+                MenuItem {
+                    text: qsTr("Settings")
+                    onClicked: pageStack.push(Qt.resolvedUrl("Settings.qml"))
+                }
+            }
+
         }
     }
 }

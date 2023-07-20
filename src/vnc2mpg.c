@@ -65,7 +65,7 @@ typedef struct {
 int add_video_stream(VideoOutputStream *ost, AVFormatContext *oc,
                        enum AVCodecID codec_id, int64_t br, int sr, int w, int h)
 {
-    int i;
+    //int i;
 
     /* find the encoder */
     ost->codec = avcodec_find_encoder(codec_id);
@@ -75,7 +75,7 @@ int add_video_stream(VideoOutputStream *ost, AVFormatContext *oc,
         return -1;
     } // no extra memory allocation from this call
     if (ost->codec->type != AVMEDIA_TYPE_VIDEO) {
-	fprintf(stderr, "Encoder for '%s' does not seem to be for video.\n",
+	    fprintf(stderr, "Encoder for '%s' does not seem to be for video.\n",
 		avcodec_get_name(codec_id));
 	return -2;
     }
@@ -185,7 +185,6 @@ int open_video(AVFormatContext *oc, VideoOutputStream *ost)
             return -3;
         } // from now on need to call sws_freeContext(ost->sws); ost->sws = NULL; on error
     }
-
     return 0;
 }
 
@@ -279,10 +278,10 @@ AVFormatContext *movie_open(char *filename, VideoOutputStream *video_st, int br,
     AVFormatContext *oc;
 
     /* allocate the output media context. */
-    ret = avformat_alloc_output_context2(&oc, NULL, NULL, filename);
+    ret = avformat_alloc_output_context2(&oc, NULL, "mpeg", filename);
     if (ret < 0) {
         fprintf(stderr, "Warning: Could not deduce output format from file extension: using MP4.\n");
-        ret = avformat_alloc_output_context2(&oc, NULL, "mp4", filename);
+        ret = avformat_alloc_output_context2(&oc, NULL, "avi", filename);
     }
     if (ret < 0) {
         fprintf(stderr, "Error: Could not allocate media context: %s.\n", av_err2str(ret));
@@ -303,16 +302,20 @@ AVFormatContext *movie_open(char *filename, VideoOutputStream *video_st, int br,
 
     /* Now that all the parameters are set, we can open the codecs and allocate the necessary encode buffers. */
     ret = open_video(oc, video_st); 
+    printf("open video codec start\n");
     if (ret < 0) {
         fprintf(stderr, "Error: error opening video codec, error %i\n", ret);
         close_video_stream(video_st);
         avformat_free_context(oc); oc = NULL;
         return NULL;
     } // no additional calls required to free memory, as close_video_stream(video_st) will do it
-
+    printf("open video codec stop\n");
     /* open the output file, if needed */
+    printf("open the output file start\n");
     if (!(oc->oformat->flags & AVFMT_NOFILE)) {
+        fprintf(stdout, "filename: %s", filename);
         ret = avio_open(&oc->pb, filename, AVIO_FLAG_WRITE);
+        printf("open the output file start2\n");
         if (ret < 0) {
             fprintf(stderr, "Could not open '%s': %s\n", filename,
                     av_err2str(ret));
@@ -321,18 +324,19 @@ AVFormatContext *movie_open(char *filename, VideoOutputStream *video_st, int br,
             return NULL;
         }
     } // will need to call avio_closep(&oc->pb) to free file handle on error
-
+    printf("open the output file stop\n");
     /* Write the stream header, if any. */
+    printf("avformat_write_header start\n");
     ret = avformat_write_header(oc, NULL);
     if (ret < 0) {
         fprintf(stderr, "Error occurred when writing to output file: %s\n",
                 av_err2str(ret));
         if (!(oc->oformat->flags & AVFMT_NOFILE))
 	    avio_closep(&oc->pb);
+    printf("avformat_write_header stop\n");
 	close_video_stream(video_st);
 	avformat_free_context(oc); oc = NULL;
     } // no additional items to free
-
     return oc;
 }
 
@@ -359,7 +363,6 @@ void movie_close(AVFormatContext **ocp, VideoOutputStream *video_st) {
         avformat_free_context(oc);
         ocp = NULL;
     }
-    fprintf(stdout, "movie_close\n");
 }
 
 /**************************************************************/
@@ -367,7 +370,8 @@ void movie_close(AVFormatContext **ocp, VideoOutputStream *video_st) {
 VideoOutputStream video_st = { 0 };
 rfbClient *client = NULL;
 rfbBool quit = FALSE;
-char *filename = NULL;
+char *filename;
+int *stop;
 AVFormatContext *oc = NULL;
 int bitrate = 2 * 1000 * 1000;//int bitrate = 1000000;
 int framerate = 25;
@@ -419,11 +423,20 @@ void vnc_update(rfbClient* client,int x,int y,int w,int h) {
 
 /**************************************************************/
 /* media file output */
-void cmain(int argc, char **argv)
+void cmain(const char *filename_const, int *stop)
 {
-    fprintf(stdout, "cmain()\n");
+//VideoOutputStream video_st = { 0 };
+client = NULL;
+quit = FALSE;
+oc = NULL;
+//bitrate = 2 * 1000 * 1000;//int bitrate = 1000000;
+//framerate = 25;
+max_time = 0;
 
-    int i,j;
+
+    //printf("stop: %i\n", *stop);
+    filename = strdup(filename_const);
+    //fprintf(stdout, "filename: %s", filename);
 
     /* Initialize vnc client structure (don't connect yet). */
     client = rfbGetClient(5,3,2); //8,3,4 // bitsPerSample, samplesPerPixel, bytesPerPixel
@@ -436,6 +449,9 @@ void cmain(int argc, char **argv)
     client->appData.useBGR233 = 0;
     client->format.bitsPerPixel = 16;
     client->format.depth = 16; //number of useful bits in the pixel value
+    client->serverHost = "127.0.0.1";
+    client->serverPort = 5900;
+    client->desktopName = "somename";
 
     SetFormatAndEncodings(client);
     /* Initialize libavcodec, and register all codecs and formats. */
@@ -444,6 +460,7 @@ void cmain(int argc, char **argv)
 #endif
 
     /* Parse command line. */
+    /*
     for(i=1;i<argc;i++) {
             j=i;
             if(argc>i+1 && !strcmp("-o",argv[i])) {
@@ -457,26 +474,33 @@ void cmain(int argc, char **argv)
 		    }
                     j+=2;
             }
-            /* This is so that argc/argv are ready for passing to rfbInitClient */
+            // This is so that argc/argv are ready for passing to rfbInitClient
             if(j>i) {
                     argc-=j-i;
                     memmove(argv+i,argv+j,(argc-i)*sizeof(char*));
                     i--;
             }
     }
+    */
+    //fprintf(stdout, "command line parsed\n");
 
     /* default filename. */
-    if (!filename) {
-        fprintf(stderr, "Warning: No filename specified. Using output.mp4\n");
-        filename = "output.mp4";
-    }
+    //if (!filename) {
+    //    fprintf(stderr, "Warning: No filename specified. Using output.mp4\n");
+    //    filename = "output.mp4";
+    //}
 
     /* open VNC connection. */
     client->MallocFrameBuffer=vnc_malloc_fb;
     client->GotFrameBufferUpdate=vnc_update;
-    if(!rfbInitClient(client,&argc,argv)) {
-        printf("usage: %s [-o output_file] [-t seconds-per-file] server:port\n", argv[0]);
-        return 1;
+    int argc_tmp = 0;
+    char* strs[] = {};
+    char** argv_tmp = strs;
+    //char *argv_tmp;
+    if(!rfbInitClient(client, &argc_tmp, argv_tmp)) {
+        fprintf(stderr, "something wrong with rfbInitClient\n");
+        //printf("usage: %s [-o output_file] [-t seconds-per-file] server:port\n", argv[0]);
+        //return 1;
     }
     fprintf(stderr, "Width: %i, Height: %i\n", client->width, client->height);
 
@@ -487,6 +511,9 @@ void cmain(int argc, char **argv)
         int i=WaitForMessage(client,10000/framerate); /* useful for timeout to be no more than 10 msec per second (=10000/framerate usec) */
 	    if (i>0) {
             if(!HandleRFBServerMessage(client)) 
+                quit=TRUE;
+            //printf("stop: %i\n", *stop);
+            if(*stop == 1)
                 quit=TRUE;
         } else if (i<0) {
             quit=TRUE;
@@ -500,4 +527,9 @@ void cmain(int argc, char **argv)
         }
     }
     movie_close(&oc,&video_st);
+    if(client) {
+        client->serverHost = NULL;
+        client->desktopName = NULL;
+        rfbClientCleanup(client);
+    }
 }

@@ -5,7 +5,7 @@
    extern "C" {
 #endif
 
-extern "C" void cmain(int argc, char **argv);
+extern "C" void cmain(const char *filename_const, int *stop);
 
 #ifdef __cplusplus
    }

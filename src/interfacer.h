@@ -24,6 +24,9 @@ signals:
 public slots:
 //    void setRunning(bool running);
     void start();
+    void quit();
+    bool isFinished();
+    bool isRunning();
 
 
 private slots:
