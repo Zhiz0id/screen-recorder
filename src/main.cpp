@@ -43,11 +43,17 @@
 int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> application(Aurora::Application::application(argc, argv));
-    application->setOrganizationName(QStringLiteral("info.you_ra"));
+    application->setOrganizationName(QStringLiteral("You Ra"));
+    application->setOrganizationDomain(QStringLiteral("you-ra.info"));
     application->setApplicationName(QStringLiteral("screen_recorder"));
 
     QScopedPointer<QQuickView> view(Aurora::Application::createView());
+    auto context = view->rootContext();
     qmlRegisterType<Interfacer>("ScreenRecorder.Interfacer", 1, 0, "Interfacer");
+
+    Interfacer interfacer;
+    context->setContextProperty("srec", &interfacer);
+
     view->setSource(Aurora::Application::pathTo(QStringLiteral("qml/screen_recorder.qml")));
     view->show();
 

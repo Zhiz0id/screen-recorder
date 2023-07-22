@@ -39,27 +39,43 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import ScreenRecorder.Interfacer 1.0
 
-Cover {
+CoverBackground {
 
-Interfacer {
-
-    id: screenrecorderInterface
-}
-    Rectangle {
-        anchors.fill: parent
-        color: "red"
+  Column {
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: parent.width
+        spacing: Theme.paddingLarge
+        Label {
+            width: parent.width
+            font.pixelSize: Theme.fontSizeLarge
+            text: qsTr("Screen Recorder")
+            horizontalAlignment: Qt.AlignHCenter
+        }
+        Label {
+            width: parent.width
+            font.pixelSize: Theme.fontSizeLarge
+            text: {
+                switch (srec.state) {
+                case Interfacer.StoppedState:
+                    return qsTr("stopped")
+                case Interfacer.RecordingState:
+                    return qsTr("recording...")
+                default:
+                    return ""
+                }
+            }
+            horizontalAlignment: Qt.AlignHCenter
+        }
     }
+
+
     CoverActionList {
             CoverAction {
-                iconSource: "image://theme/icon-cover-record"
-                onTriggered: screenrecorderInterface.start()
+                iconSource: srec.state == Interfacer.RecordingState ?
+                    "image://theme/icon-cover-cancel" : "image://theme/icon-cover-record"
+                onTriggered: srec.state == Interfacer.RecordingState ?
+                    srec.stopRecording() : srec.startRecording()
             }
-
-            CoverAction {
-                iconSource: "image://theme/icon-cover-cancel"
-                onTriggered: screenrecorderInterface.quit()
-            }
-
     }
 }
-

@@ -32,9 +32,9 @@ Page {
                 valueText: qsTr("1:%1").arg(value).toLocaleString()
                 label: qsTr("Scale of video")
 
-                //onValueChanged: recorder.volume = value
+                onValueChanged: srec.scale = value
 
-                //Component.onCompleted: value = recorder.volume
+                Component.onCompleted: value = srec.scale
             }
 
             SectionHeader {
@@ -49,9 +49,9 @@ Page {
                 valueText: qsTr("%1fps").arg(value).toLocaleString()
                 label: qsTr("fps")
 
-                //onValueChanged: recorder.volume = value
+                onValueChanged: srec.fps = value
 
-                //Component.onCompleted: value = recorder.volume
+                Component.onCompleted: value = srec.fps
             }
 
             SectionHeader {
@@ -61,14 +61,14 @@ Page {
             Slider {
                 width: parent.width
                 minimumValue: 1.0
-                maximumValue: 2000.0
-                stepSize: 1.0
+                maximumValue: 4096.0
+                stepSize: 32.0
                 valueText: qsTr("%1K bps").arg(value).toLocaleString()
                 label: qsTr("bps")
 
-                //onValueChanged: recorder.volume = value
+                onValueChanged: srec.bps = value
 
-                //Component.onCompleted: value = recorder.volume
+                Component.onCompleted: value = srec.bps
             }
 
 
@@ -79,10 +79,10 @@ Page {
             ComboBox {
                 width: parent.width
                 label: qsTr("Codec")
-                //currentIndex: recorder.codec
+                currentIndex: srec.codec
                 description: qsTr("Some codecs might be not supported by some players.")
 
-                //onCurrentItemChanged: recorder.codec = currentIndex
+                onCurrentItemChanged: srec.codec = currentIndex
 
                 menu: ContextMenu {
                     MenuItem { text: "MPEG-2" }

@@ -43,10 +43,6 @@ Page {
     objectName: "mainPage"
     allowedOrientations: Orientation.All
 
-    Interfacer {
-        id: screenrecorderInterface
-        //running: Qt.application.state === Qt.ApplicationActive
-    }
     SilicaFlickable{
         //id: dockTools
         //width: parent.width
@@ -60,6 +56,7 @@ Page {
             id: column
             width: parent.width
             spacing: Theme.paddingMedium
+
             PageHeader {
                 objectName: "pageHeader"
                 title: qsTr("Screen recorder")
@@ -78,27 +75,33 @@ Page {
               text: qsTr("Recording")
             }
 
-            IconButton {
-                id: startButton
-                icon.source: "../icons/record.png"
-                enabled: true //screenrecorderInterface.isFinished()
-                onClicked: {
-                    console.log("start");
-                    screenrecorderInterface.start();
+            ButtonLayout {
+                Button {
+                    text: {
+                        switch (srec.state) {
+                            case Interfacer.StoppedState:
+                                return qsTr("Record")
+                            case Interfacer.RecordingState:
+                                return qsTr("Stop")
+                            default:
+                                return ""
+                        }
+                    }
+                    onClicked: {
+                        switch (srec.state) {
+                            case Interfacer.StoppedState:
+                                srec.startRecording();
+                                return;
+                            case Interfacer.RecordingState:
+                                srec.stopRecording();
+                                return;
+                            default:
+                                console.log("default action?");
+                                return;
+                        }
+                    }
                 }
-
             }
-            IconButton {
-                id: stopButton
-                icon.source: "../icons/stop.png"
-                enabled: true //screenrecorderInterface.isRunning()
-                onClicked: {
-                    console.log("quit");
-                    screenrecorderInterface.quit();
-                }
-
-            }
-
             PullDownMenu {
                 MenuItem {
                     text: qsTr("Settings")
