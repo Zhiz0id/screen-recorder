@@ -7,6 +7,6 @@ Name=Screen recorder
 Name[ru]=Запись экрана
 
 [X-Application]
-Permissions=Audio;Microphone;RemovableMedia;Videos;Internet
+Permissions=Audio;Microphone;RemovableMedia;UserDirs;Internet
 OrganizationName=info.you_ra
 ApplicationName=screen_recorder

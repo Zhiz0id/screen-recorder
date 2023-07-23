@@ -62,7 +62,7 @@ pkg_search_module(AURORA auroraapp_i18n REQUIRED)
 #    libswscale
 #    libavutil
 #)
-
+include(QtTranslationWithID.cmake)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -171,10 +171,22 @@ set(screenrecorder_SRCS
     src/recordthread.cpp
     src/vnc2mpg.c
 )
+file(GLOB_RECURSE screenrecorder_QML_SRCS qml/*.qml)
+
+set(screenrecorder_TS_SRCS
+    ${screenrecorder_SRCS}
+    ${screenrecorder_QML_SRCS}
+)
+
+create_translation(engen_qm_file ${CMAKE_SOURCE_DIR}/translations/screen_recorder.ts ${CMAKE_SOURCE_DIR}/translations/screen_recorder_ru.ts ${screenrecorder_TS_SRCS})
+
 FILE(GLOB TsFiles "translations/*.ts")
 qt5_add_translation(QmFiles ${TsFiles})
+#qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} screen_recorder.ts screen_recorder_ru.ts)
 
-add_executable(${PROJECT_NAME} ${screenrecorder_SRCS} ${QmFiles} ${FOLEYS_ARG_BUILD_TARGET})
+add_executable(${PROJECT_NAME} ${screenrecorder_SRCS} ${engen_qm_file} ${QmFiles} ${FOLEYS_ARG_BUILD_TARGET})
+#set(QT_DEPLOY_TRANSLATIONS_DIR "share/info.you_ra.screen_recorder/translations")
+
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 add_dependencies(${PROJECT_NAME} libvncclient)
 #find_path("AVCODEC_INCLUDE_DIR" "libavcodec/avcodec.h" PATHS "${CMAKE_SOURCE_DIR}/FFmpegBuild/Cache/ffmpeg-4.4.4/libavcodec/")
@@ -286,8 +298,9 @@ install(DIRECTORY qml
 foreach(_file IN LISTS QmFiles)
     get_filename_component(_filename "${_file}" NAME)
     string(REPLACE "${short_name}" "${PROJECT_NAME}" _full_filename "${_filename}")
-    install(FILES ${_file} DESTINATION share/info.you_ra.screen_recorder/translations RENAME ${_full_filename})
+    install(FILES ${_file} DESTINATION share/info.you_ra.screen_recorder/translations)# RENAME ${_full_filename})
 endforeach()
+#install(FILES ${engen_qm_file} DESTINATION share/info.you_ra.screen_recorder/translations RENAME ${_full_filename})
 
 install(FILES info.you_ra.screen_recorder.desktop
     DESTINATION share/applications

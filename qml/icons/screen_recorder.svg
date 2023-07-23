@@ -24,8 +24,8 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="0.31793759"
-     inkscape:cx="372.71466"
-     inkscape:cy="468.64544"
+     inkscape:cx="367.99675"
+     inkscape:cy="468.64543"
      inkscape:window-width="1600"
      inkscape:window-height="799"
      inkscape:window-x="0"
@@ -36,7 +36,7 @@
      id="Background"
      d="M 0,357.5 C 0,177.04 0,112.12 56.06,56.06 112.12,0 177.05,0 382.8,0 h 258.39 c 205.76,0 270.68,0 326.74,56.06 56.06,56.06 56.06,120.99 56.06,326.74 v 258.39 c 0,205.76 0,270.68 -56.06,326.74 -56.06,56.059 -120.99,56.059 -326.74,56.059 H 382.8 c -205.76,0 -270.68,0 -326.74,-56.059 C 0,911.87 0,846.94 0,641.19 Z"
      fill="#003e88"
-     style="display:inline;stroke:#41e18c;stroke-opacity:1;fill:#2b86ff;fill-opacity:1"
+     style="display:inline;stroke:none;stroke-opacity:1;fill:#2b86ff;fill-opacity:1"
      inkscape:label="Background" />
   <mask
      id="Frame_Mask"

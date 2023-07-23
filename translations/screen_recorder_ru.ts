@@ -4,47 +4,157 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="58"/>
+        <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>About Application</source>
-        <translation>О&#xa0;приложении</translation>
+        <translation>О приложении</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="68"/>
+        <location filename="../qml/pages/AboutPage.qml" line="50"/>
         <source>#descriptionText</source>
-        <translation>&lt;p&gt;Screen recorder application&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;Запись экрана программа&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="73"/>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <source>GNU General Public License, version 2</source>
+        <translation>Стандартная общественная лицензия GNU (GPL), версия 2</translation>
+    </message>
+    <message>
         <source>3-Clause BSD License</source>
-        <translation>Лицензия 3-Clause&#xa0;BSD</translation>
+        <translation type="vanished">Лицензия 3-Clause BSD</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="83"/>
+        <location filename="../qml/pages/AboutPage.qml" line="65"/>
         <source>#licenseText</source>
-        <translation>&lt;p&gt;&lt;i&gt;Copyright&#xa0;(C)&#xa0;2022 info.you_ra&lt;/i&gt;&lt;/p&gt;
-&lt;p&gt;Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:&lt;/p&gt;
-&lt;ol&gt;
-	&lt;li&gt;Redistributions of&#xa0;source code must retain the above copyright notice, this list of&#xa0;conditions and the following disclaimer.&lt;/li&gt;
-	&lt;li&gt;Redistributions in&#xa0;binary form must reproduce the above copyright notice, this list of&#xa0;conditions and the following disclaimer in&#xa0;the documentation and/or other materials provided with the distribution.&lt;/li&gt;
-	&lt;li&gt;Neither the name of&#xa0;the copyright holder nor the names of&#xa0;its contributors may be&#xa0;used to&#xa0;endorse or&#xa0;promote products derived from this software without specific prior written permission.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;THIS SOFTWARE IS&#xa0;PROVIDED BY&#xa0;THE&#xa0;COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS&#xa0;IS&quot; AND ANY EXPRESS OR&#xa0;IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE&#xa0;IMPLIED WARRANTIES OF&#xa0;MERCHANTABILITY AND FITNESS FOR A&#xa0;PARTICULAR PURPOSE ARE DISCLAIMED. IN&#xa0;NO&#xa0;EVENT SHALL THE&#xa0;COPYRIGHT HOLDER OR&#xa0;CONTRIBUTORS BE&#xa0;LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR&#xa0;CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF&#xa0;SUBSTITUTE GOODS OR&#xa0;SERVICES; LOSS OF&#xa0;USE, DATA, OR&#xa0;PROFITS; OR&#xa0;BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON&#xa0;ANY THEORY OF&#xa0;LIABILITY, WHETHER IN&#xa0;CONTRACT, STRICT LIABILITY, OR&#xa0;TORT (INCLUDING NEGLIGENCE OR&#xa0;OTHERWISE) ARISING IN&#xa0;ANY WAY OUT OF&#xa0;THE&#xa0;USE OF&#xa0;THIS SOFTWARE, EVEN IF&#xa0;ADVISED OF&#xa0;THE&#xa0;POSSIBILITY OF&#xa0;SUCH DAMAGE.&lt;/p&gt;</translation>
+        <translation>&lt;pre&gt;&lt;i&gt;** Copyright (C) 2023 Yura Beznos at You-ra.info
+**
+** This program is free software; you can redistribute it and/or
+** modify it under the terms of the GNU General Public License
+** as published by the Free Software Foundation; either version 2
+** of the License, or (at your option) any later version.
+**
+** This program is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with this program; if not, write an email to the license@you-ra.info
+*******************************************************************************/
+&lt;/pre&gt;</translation>
     </message>
 </context>
 <context>
     <name>DefaultCoverPage</name>
     <message>
-        <location filename="../qml/cover/DefaultCoverPage.qml" line="47"/>
         <source>Screen recorder</source>
-        <translation>Запись экрана</translation>
+        <translation type="vanished">Запись экрана</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/DefaultCoverPage.qml" line="49"/>
+        <source>Screen Recorder</source>
+        <translation>Запись Экрана</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/DefaultCoverPage.qml" line="58"/>
+        <source>stopped</source>
+        <translation>остановлена</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/DefaultCoverPage.qml" line="60"/>
+        <source>recording...</source>
+        <translation>идёт запись...</translation>
     </message>
 </context>
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="48"/>
+        <location filename="../qml/pages/MainPage.qml" line="45"/>
         <source>Screen recorder</source>
         <translation>Запись экрана</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="58"/>
+        <source>Control</source>
+        <translation>Управление</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="66"/>
+        <source>Record</source>
+        <translation>Запись</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="68"/>
+        <source>Stop</source>
+        <translation>Остановить</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="90"/>
+        <source>Settings</source>
+        <translation>Настройки</translation>
+    </message>
+</context>
+<context>
+    <name>Settings</name>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="40"/>
+        <source>Settings</source>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="44"/>
+        <source>Scale</source>
+        <translation>Уменьшение</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="52"/>
+        <source>1:%1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="53"/>
+        <source>Scale of video</source>
+        <translation>Уменьшение видео</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="61"/>
+        <source>Frame per second</source>
+        <translation>Кадры в секунду</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="69"/>
+        <source>%1fps</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="70"/>
+        <source>fps</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="78"/>
+        <source>Bitrate</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="86"/>
+        <source>%1K bps</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="87"/>
+        <source>bps</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="96"/>
+        <location filename="../qml/pages/Settings.qml" line="101"/>
+        <source>Codec</source>
+        <translation>Метод преобразования (кодек)</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="103"/>
+        <source>Some codecs might be not supported by some players.</source>
+        <translation>Некоторые методы могут не поддерживаться проигрывателями.</translation>
     </message>
 </context>
 </TS>
