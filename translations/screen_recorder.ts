@@ -145,16 +145,5 @@
         <source>bps</source>
         <translation></translation>
     </message>
-    <message>
-        <location filename="../qml/pages/Settings.qml" line="96"/>
-        <location filename="../qml/pages/Settings.qml" line="101"/>
-        <source>Codec</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Settings.qml" line="103"/>
-        <source>Some codecs might be not supported by some players.</source>
-        <translation></translation>
-    </message>
 </context>
 </TS>

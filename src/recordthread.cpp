@@ -30,7 +30,7 @@ using namespace std;
 //extern "C" int cmain(int argc, char **argv);
 
 RecordThread::RecordThread(QString threadName) :
-    name(threadName)
+    name(threadName), m_settings(nullptr)
 {
     /*
     const QString settingsPath = 
@@ -53,13 +53,14 @@ void RecordThread::run()
     QString filepath = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation) + filename;
     qDebug() << "start RecordThread";
     qDebug() << filepath;
-    int scale = settings.value(SCALE, 1).toInt();
-    int fps = settings.value(FPS, 25).toInt();
-    int bps = settings.value(BPS, 2048).toInt();
-    int codec = static_cast<RecordThread::Codec>(settings.value(CODEC, MPEG2).toInt());
+    Settings *m_settings = new Settings();
+    int scale = m_settings->scale();
+    int fps = m_settings->fps();
+    int bps = m_settings->bps();
+    //int codec = static_cast<RecordThread::Codec>(settings.value(CODEC, MPEG2).toInt());
 
     stop = 0;
-    cmain(filepath.toStdString().data(), &stop, &scale, &fps, &bps, &codec);
+    cmain(filepath.toStdString().data(), &stop, &scale, &fps, &bps);
 }
 void RecordThread::stopit()
 {

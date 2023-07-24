@@ -20,7 +20,8 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import ScreenRecorder.Interfacer 1.0
+import info.you_ra.ScreenRecorder 1.0
+
 ApplicationWindow {
     objectName: "applicationWindow"
     initialPage: Qt.resolvedUrl("pages/MainPage.qml")
@@ -30,4 +31,9 @@ ApplicationWindow {
     Connections {
        target: srec
     }
+
+    Settings {
+        id: srecSettings
+    }
+
 }

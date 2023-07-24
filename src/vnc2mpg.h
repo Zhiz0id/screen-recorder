@@ -26,7 +26,7 @@
 #endif
 
 extern "C" void cmain(const char *filename_const, int *stop, int *scale, 
-                      int *fps, int *bps, int *codec);
+                      int *fps, int *bps);
 
 #ifdef __cplusplus
    }

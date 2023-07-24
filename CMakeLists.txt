@@ -168,6 +168,7 @@ include_directories(
 set(screenrecorder_SRCS
     src/main.cpp
     src/interfacer.cpp
+    src/settings.cpp
     src/recordthread.cpp
     src/vnc2mpg.c
 )

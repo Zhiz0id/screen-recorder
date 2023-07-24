@@ -146,15 +146,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="96"/>
-        <location filename="../qml/pages/Settings.qml" line="101"/>
         <source>Codec</source>
-        <translation>Метод преобразования (кодек)</translation>
+        <translation type="vanished">Метод преобразования (кодек)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="103"/>
         <source>Some codecs might be not supported by some players.</source>
-        <translation>Некоторые методы могут не поддерживаться проигрывателями.</translation>
+        <translation type="vanished">Некоторые методы могут не поддерживаться проигрывателями.</translation>
     </message>
 </context>
 </TS>

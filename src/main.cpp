@@ -20,6 +20,8 @@
 
 #include <auroraapp.h>
 #include <QtQuick>
+
+#include "settings.h"
 #include "interfacer.h"
 
 
@@ -37,7 +39,8 @@ int main(int argc, char *argv[])
     application->installTranslator(translator);
 
     auto context = view->rootContext();
-    qmlRegisterType<Interfacer>("ScreenRecorder.Interfacer", 1, 0, "Interfacer");
+    qmlRegisterType<Interfacer>("info.you_ra.ScreenRecorder", 1, 0, "Interfacer");
+    qmlRegisterType<Settings>("info.you_ra.ScreenRecorder", 1, 0, "Settings");
 
     Interfacer interfacer;
     context->setContextProperty("srec", &interfacer);

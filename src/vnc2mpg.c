@@ -422,7 +422,7 @@ void vnc_update(rfbClient* client,int x,int y,int w,int h) {
 /**************************************************************/
 /* media file output */
 void cmain(const char *filename_const, int *stop, int *s, int *fps, 
-           int *bps, int *codec)
+           int *bps)
 {
     //VideoOutputStream video_st = { 0 };
     client = NULL;

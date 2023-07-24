@@ -52,9 +52,9 @@ Page {
                 valueText: qsTr("1:%1").arg(value).toLocaleString()
                 label: qsTr("Scale of video")
 
-                onValueChanged: srec.scale = value
+                onValueChanged: srecSettings.scale = value
 
-                Component.onCompleted: value = srec.scale
+                Component.onCompleted: value = srecSettings.scale
             }
 
             SectionHeader {
@@ -69,9 +69,9 @@ Page {
                 valueText: qsTr("%1fps").arg(value).toLocaleString()
                 label: qsTr("fps")
 
-                onValueChanged: srec.fps = value
+                onValueChanged: srecSettings.fps = value
 
-                Component.onCompleted: value = srec.fps
+                Component.onCompleted: value = srecSettings.fps
             }
 
             SectionHeader {
@@ -86,12 +86,12 @@ Page {
                 valueText: qsTr("%1K bps").arg(value).toLocaleString()
                 label: qsTr("bps")
 
-                onValueChanged: srec.bps = value
+                onValueChanged: srecSettings.bps = value
 
-                Component.onCompleted: value = srec.bps
+                Component.onCompleted: value = srecSettings.bps
             }
 
-
+/*
             SectionHeader {
                 text: qsTr("Codec")
             }
@@ -112,6 +112,7 @@ Page {
                     MenuItem { text: "Theora" }
                 }
             }
+*/
         }
     }
 }
