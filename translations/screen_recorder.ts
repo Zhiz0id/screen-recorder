@@ -180,52 +180,52 @@
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="40"/>
+        <location filename="../qml/pages/Settings.qml" line="41"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="44"/>
+        <location filename="../qml/pages/Settings.qml" line="45"/>
         <source>Scale</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="52"/>
-        <source>1:%1</source>
-        <translation></translation>
+        <location filename="../qml/pages/Settings.qml" line="53"/>
+        <source>%1:%2</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="53"/>
+        <location filename="../qml/pages/Settings.qml" line="54"/>
         <source>Scale of video</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="61"/>
+        <location filename="../qml/pages/Settings.qml" line="62"/>
         <source>Frame per second</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="69"/>
+        <location filename="../qml/pages/Settings.qml" line="70"/>
         <source>%1fps</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="70"/>
+        <location filename="../qml/pages/Settings.qml" line="71"/>
         <source>fps</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="78"/>
+        <location filename="../qml/pages/Settings.qml" line="79"/>
         <source>Bitrate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="86"/>
+        <location filename="../qml/pages/Settings.qml" line="87"/>
         <source>%1K bps</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="87"/>
+        <location filename="../qml/pages/Settings.qml" line="88"/>
         <source>bps</source>
         <translation></translation>
     </message>

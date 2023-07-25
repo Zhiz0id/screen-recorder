@@ -5,9 +5,9 @@
 #include <QDateTime>
 
 const QStringList RecordingsModel::filters{
-    "*.ogv",
-    "*.mp4",
-    "*.avi"
+    "sr-*.ogv",
+    "sr-*.mp4",
+    "sr-*.avi"
 };
 
 RecordingsModel::RecordingsModel(QObject *parent) :
@@ -60,7 +60,6 @@ void RecordingsModel::scanRecords(const QString &path)
 
     // Check if directory exists and add or remove it and
     // its subdirectories to the wathing list
-    qDebug() << path;
     QDir dir(path);
     QStringList paths(path);
     if (dir.exists())

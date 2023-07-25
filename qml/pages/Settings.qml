@@ -20,6 +20,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.Window 2.0
 
 Page {
     id: page
@@ -49,7 +50,7 @@ Page {
                 minimumValue: 1.0
                 maximumValue: 4.0
                 stepSize: 1.0
-                valueText: qsTr("1:%1").arg(value).toLocaleString()
+                valueText: qsTr("%1:%2").arg(Screen.width/value).arg(Screen.height/value).toLocaleString()
                 label: qsTr("Scale of video")
 
                 onValueChanged: srecSettings.scale = value

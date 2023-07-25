@@ -460,37 +460,6 @@ void cmain(const char *filename_const, int *stop, int *s, int *fps,
     av_register_all();
 #endif
 
-    /* Parse command line. */
-    /*
-    for(i=1;i<argc;i++) {
-            j=i;
-            if(argc>i+1 && !strcmp("-o",argv[i])) {
-                    filename=argv[i+1];
-                    j+=2;
-            } else if(argc>i+1 && !strcmp("-t",argv[i])) {
-                    max_time=atol(argv[i+1]);
-		    if (max_time < 10 || max_time > 100000000) {
-			fprintf(stderr, "Warning: Nonsensical time-per-file %li, resetting to default.\n", max_time);
-			max_time = 0;
-		    }
-                    j+=2;
-            }
-            // This is so that argc/argv are ready for passing to rfbInitClient
-            if(j>i) {
-                    argc-=j-i;
-                    memmove(argv+i,argv+j,(argc-i)*sizeof(char*));
-                    i--;
-            }
-    }
-    */
-    //fprintf(stdout, "command line parsed\n");
-
-    /* default filename. */
-    //if (!filename) {
-    //    fprintf(stderr, "Warning: No filename specified. Using output.mp4\n");
-    //    filename = "output.mp4";
-    //}
-
     /* open VNC connection. */
     client->MallocFrameBuffer=vnc_malloc_fb;
     client->GotFrameBufferUpdate=vnc_update;

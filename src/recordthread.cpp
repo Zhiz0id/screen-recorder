@@ -51,8 +51,6 @@ void RecordThread::run()
     QString filename = QStringLiteral("/sr-%1.mp4").arg(dateString);
 
     QString filepath = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation) + filename;
-    qDebug() << "start RecordThread";
-    qDebug() << filepath;
     Settings *m_settings = new Settings();
     int scale = m_settings->scale();
     int fps = m_settings->fps();
