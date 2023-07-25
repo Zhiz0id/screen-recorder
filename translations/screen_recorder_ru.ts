@@ -128,32 +128,32 @@
 <context>
     <name>RecordingsModel</name>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="166"/>
+        <location filename="../src/recordingsmodel.cpp" line="165"/>
         <source>Today</source>
         <translation>Сегодня</translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="170"/>
+        <location filename="../src/recordingsmodel.cpp" line="169"/>
         <source>Yesterday</source>
         <translation>Вчера</translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="174"/>
+        <location filename="../src/recordingsmodel.cpp" line="173"/>
         <source>This week</source>
         <translation>На этой неделе</translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="178"/>
+        <location filename="../src/recordingsmodel.cpp" line="177"/>
         <source>This month</source>
         <translation>В этом месяце</translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="182"/>
+        <location filename="../src/recordingsmodel.cpp" line="181"/>
         <source>Last 6 months</source>
         <translation>За последние 6 месяцев</translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="184"/>
+        <location filename="../src/recordingsmodel.cpp" line="183"/>
         <source>Older</source>
         <translation>Более старые</translation>
     </message>

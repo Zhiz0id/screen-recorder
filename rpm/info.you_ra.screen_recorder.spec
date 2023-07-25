@@ -4,11 +4,11 @@
 Name:       info.you_ra.screen_recorder
 
 Summary:    Screen recorder application
-Version:    0.0.1
+Version:    0.1.302517
 Release:    1
 Group:      Qt/Qt
-License:    BSD-3-Clause
-URL:        https://auroraos.ru
+License:    GPLv2
+URL:        https://you-ra.info
 Source0:    %{name}-%{version}.tar.bz2
 
 Requires:   sailfishsilica-qt5 >= 0.10.9

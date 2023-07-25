@@ -124,32 +124,32 @@
 <context>
     <name>RecordingsModel</name>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="166"/>
+        <location filename="../src/recordingsmodel.cpp" line="165"/>
         <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="170"/>
+        <location filename="../src/recordingsmodel.cpp" line="169"/>
         <source>Yesterday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="174"/>
+        <location filename="../src/recordingsmodel.cpp" line="173"/>
         <source>This week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="178"/>
+        <location filename="../src/recordingsmodel.cpp" line="177"/>
         <source>This month</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="182"/>
+        <location filename="../src/recordingsmodel.cpp" line="181"/>
         <source>Last 6 months</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/recordingsmodel.cpp" line="184"/>
+        <location filename="../src/recordingsmodel.cpp" line="183"/>
         <source>Older</source>
         <translation type="unfinished"></translation>
     </message>
