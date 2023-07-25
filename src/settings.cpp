@@ -37,7 +37,7 @@ Settings::Settings(const QString &settingsPath, QObject *parent) : QObject(paren
 // scale
 int Settings::scale() const
 {
-    return value(SCALE, 1).toInt();
+    return value(SCALE, 2).toInt();
 }
 
 void Settings::setScale(const int &scale)

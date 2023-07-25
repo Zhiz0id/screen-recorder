@@ -68,29 +68,113 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="45"/>
+        <location filename="../qml/pages/MainPage.qml" line="77"/>
+        <source>Your recordings will be shown here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="47"/>
         <source>Screen recorder</source>
         <translation>Screen recorder</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="58"/>
-        <source>Control</source>
-        <translation></translation>
+        <location filename="../qml/pages/MainPage.qml" line="48"/>
+        <source>Record button - to record your screen. Settings in pulley menu to change properties.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="66"/>
+        <location filename="../qml/pages/MainPage.qml" line="106"/>
         <source>Record</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="68"/>
+        <location filename="../qml/pages/MainPage.qml" line="108"/>
         <source>Stop</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="90"/>
+        <location filename="../qml/pages/MainPage.qml" line="70"/>
         <source>Settings</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>RecordingDelegate</name>
+    <message>
+        <location filename="../qml/components/RecordingDelegate.qml" line="9"/>
+        <source>Share</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/RecordingDelegate.qml" line="22"/>
+        <source>Rename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/RecordingDelegate.qml" line="30"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/RecordingDelegate.qml" line="32"/>
+        <source>Deleting</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RecordingsModel</name>
+    <message>
+        <location filename="../src/recordingsmodel.cpp" line="166"/>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/recordingsmodel.cpp" line="170"/>
+        <source>Yesterday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/recordingsmodel.cpp" line="174"/>
+        <source>This week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/recordingsmodel.cpp" line="178"/>
+        <source>This month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/recordingsmodel.cpp" line="182"/>
+        <source>Last 6 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/recordingsmodel.cpp" line="184"/>
+        <source>Older</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RenameDialog</name>
+    <message>
+        <location filename="../qml/pages/RenameDialog.qml" line="22"/>
+        <source>Rename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RenameDialog.qml" line="28"/>
+        <source>New filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RenameDialog.qml" line="42"/>
+        <source>A file name must be specified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RenameDialog.qml" line="44"/>
+        <source>File already exists</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -144,6 +228,15 @@
         <location filename="../qml/pages/Settings.qml" line="87"/>
         <source>bps</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>ViewVideoPage</name>
+    <message>
+        <location filename="../qml/pages/ViewVideoPage.qml" line="107"/>
+        <source>Failed to play</source>
+        <extracomment>Full page placeholder shown when a video failed to load</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

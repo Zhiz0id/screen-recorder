@@ -63,6 +63,7 @@ public:
         OutOfSpaceError
     };
 
+    QString location() const;
     Interfacer::State state() const;
     void setState(const State &state);
     Interfacer::Status status() const;
@@ -74,6 +75,8 @@ public Q_SLOTS:
     void stopRecording();
     bool isFinished();
     bool isRunning();
+    void removeFile(const QString &filePath);
+    void renameFile(const QString &oldPath, const QString &newPath);
 
 Q_SIGNALS:
 //    void runningChanged(bool running);

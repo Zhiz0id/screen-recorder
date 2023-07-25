@@ -27,6 +27,11 @@ Interfacer::Interfacer()//: recordT(new RecordThread("A"))
     //connect(this, &Interfacer::state, this, &Interfacer::stateChanged);
 }
 
+QString Interfacer::location() const
+{
+    return QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
+}
+
 Interfacer::State Interfacer::state() const
 {
     if (running) {
@@ -116,5 +121,17 @@ bool Interfacer::isRunning()
         return recordT->isRunning();
     } else {
         return false;
+    }
+}
+void Interfacer::removeFile(const QString &filePath)
+{
+    QFile(filePath).remove();
+}
+
+void Interfacer::renameFile(const QString &oldPath, const QString &newPath)
+{
+    if (oldPath != newPath)
+    {
+        QFile(oldPath).rename(newPath);
     }
 }

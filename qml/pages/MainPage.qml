@@ -21,42 +21,82 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import info.you_ra.ScreenRecorder 1.0
+import "../components"
 
 Page {
     objectName: "mainPage"
     allowedOrientations: Orientation.All
 
-    SilicaFlickable{
-        //id: dockTools
-        //width: parent.width
-        anchors.fill: parent
-        contentHeight: column.height
-        //height: 100
-        //open: true
-        //dock: Dock.Bottom
+    SilicaListView {
+        id: recordingsList
 
-            Column{
-            id: column
-            width: parent.width
-            spacing: Theme.paddingMedium
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            bottom: control.top
+            bottomMargin: Theme.paddingLarge
+        }
 
-            PageHeader {
+        enabled: opacity > 0.0
+        currentIndex: -1
+        clip: true
+        model: recordingsModel
+        header: PageHeader {
                 objectName: "pageHeader"
                 title: qsTr("Screen recorder")
+                description: qsTr("Record button - to record your screen. Settings in pulley menu to change properties.")
                 extraContent.children: [
                     IconButton {
                         objectName: "aboutButton"
                         icon.source: "image://theme/icon-m-about"
                         anchors.verticalCenter: parent.verticalCenter
-        
+
                         onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
                     }
                 ]
             }
 
-            SectionHeader {
-              text: qsTr("Control")
+        delegate: RecordingDelegate { }
+
+        section {
+            property: "section"
+            delegate: SectionHeader {
+                text: section
             }
+        }
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Settings")
+               onClicked: pageStack.push(Qt.resolvedUrl("Settings.qml"))
+            }
+        }
+
+        ViewPlaceholder {
+            enabled: !recordingsList.count
+            text: qsTr("Your recordings will be shown here")
+        }
+
+        VerticalScrollDecorator { }
+    }
+
+    Item {
+        id: control
+        width: parent.width
+        //anchors.fill: parent
+        anchors {
+            left: parent.left
+            right: parent.right
+	    bottom: parent.bottom
+            margins: Theme.paddingLarge
+        }
+        height: buttons.height + Theme.paddingLarge * 2
+
+        Row{
+            id: buttons
+            width: parent.width
+            spacing: Theme.paddingLarge
+
 
             ButtonLayout {
                 Button {
@@ -85,13 +125,6 @@ Page {
                     }
                 }
             }
-            PullDownMenu {
-                MenuItem {
-                    text: qsTr("Settings")
-                    onClicked: pageStack.push(Qt.resolvedUrl("Settings.qml"))
-                }
-            }
-
         }
     }
 }

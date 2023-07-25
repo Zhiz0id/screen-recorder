@@ -23,6 +23,7 @@
 
 #include "settings.h"
 #include "interfacer.h"
+#include "recordingsmodel.h"
 
 
 int main(int argc, char *argv[])
@@ -44,6 +45,16 @@ int main(int argc, char *argv[])
 
     Interfacer interfacer;
     context->setContextProperty("srec", &interfacer);
+
+    RecordingsModel sourceModel;
+    sourceModel.setInterfacer(&interfacer);
+
+    QSortFilterProxyModel recordingsModel;
+    recordingsModel.setSourceModel(&sourceModel);
+    recordingsModel.setSortRole(RecordingsModel::Modified);
+    recordingsModel.setDynamicSortFilter(true);
+    recordingsModel.sort(0, Qt::DescendingOrder);
+    context->setContextProperty("recordingsModel", &recordingsModel);
 
     view->setSource(Aurora::Application::pathTo(QStringLiteral("qml/screen_recorder.qml")));
     view->show();

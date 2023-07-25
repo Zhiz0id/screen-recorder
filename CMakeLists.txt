@@ -168,6 +168,7 @@ include_directories(
 set(screenrecorder_SRCS
     src/main.cpp
     src/interfacer.cpp
+    src/recordingsmodel.cpp
     src/settings.cpp
     src/recordthread.cpp
     src/vnc2mpg.c
@@ -329,6 +330,10 @@ add_custom_target(distfiles
         qml/pages/MainPage.qml
         qml/pages/AboutPage.qml
         qml/pages/Settings.qml
+        qml/pages/RenameDialog.qml
+        qml/pages/ViewVideoPage.qml
+        qml/components/RecordingDelegate.qml
+        qml/components/MediaTitleOverlay.qml
         rpm/info.you_ra.screen_recorder.spec
         rpm/info.you_ra.screen_recorder.changes.in
         rpm/info.you_ra.screen_recorder.changes.run.in
