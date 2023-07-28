@@ -18,7 +18,6 @@
 ## along with this program; if not, write an email to the license@you-ra.info
 ###############################################################################
 
-#set(CMAKE_MAKE_PROGRAM "/usr/bin/make")
 set(CMAKE_CXX_COMPILER "/usr/bin/g++")
 set(CMAKE_C_COMPILER "/usr/bin/gcc")
 
@@ -29,23 +28,13 @@ cmake_minimum_required(VERSION 3.5)
 find_package (Qt5 COMPONENTS Core Network Qml Gui Quick LinguistTools REQUIRED)
 set(AURORAOS_SHARED_LIBRARY_DIR /usr/share/${PROJECT_NAME}/lib)
 set(short_name screen_recorder)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ggdb")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -std=c++0x -fPIC -pie -rdynamic -Wall -Wl,-rpath=/usr/share/${PROJECT_NAME}/lib")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -pie -rdynamic -Wall -Wl,-rpath=/usr/share/${PROJECT_NAME}/lib")
 
-#add_subdirectory(FFmpegBuild)
 include(FindPkgConfig)
 pkg_search_module(AURORA auroraapp REQUIRED)
 pkg_search_module(AURORA auroraapp_i18n REQUIRED)
-#pkg_search_module(VNC libvncclient REQUIRED)
-#pkg_check_modules(LIBAV REQUIRED IMPORTED_TARGET
-#    libavdevice
-#    libavfilter
-#    libavformat
-#    libavcodec
-#    libswresample
-#    libswscale
-#    libavutil
-#)
+
 include(QtTranslationWithID.cmake)
 
 set(CMAKE_AUTOMOC ON)
@@ -107,8 +96,6 @@ if (NOT EXISTS "${FFMPEG_SOURCE_DIR}")
                      WORKING_DIRECTORY "${cache_dir}")
 endif ()
 
-#string (REPLACE " -Wl,--fatal-warnings" "" FFMPEG_LD_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}")
-#set (FFMPEG_LD_FLAGS "${FFMPEG_C_FLAGS} ${FFMPEG_LD_FLAGS} ${FFMPEG_EXTRA_LD_FLAGS}")
 if (NOT EXISTS "${FFMPEG_SOURCE_DIR}/libavfilter/libavfilter.so.")
 set (CONFIGURE_COMMAND
      "./configure
@@ -116,10 +103,6 @@ set (CONFIGURE_COMMAND
      --disable-doc
      --disable-asm
      --enable-shared")
-     #--shlibdir=${FOLEYS_ARG_OUTPUT_DIR}
-     #--libdir=${FOLEYS_ARG_OUTPUT_DIR}
-     #--incdir=${FOLEYS_ARG_OUTPUT_DIR}/${CMAKE_INSTALL_INCLUDEDIR}
-     #--prefix=${FOLEYS_ARG_OUTPUT_DIR}")
 
 separate_arguments (ffmpeg_config_command UNIX_COMMAND "${CONFIGURE_COMMAND}")
 
@@ -168,19 +151,14 @@ create_translation(engen_qm_file ${CMAKE_SOURCE_DIR}/translations/screen_recorde
 
 FILE(GLOB TsFiles "translations/*.ts")
 qt5_add_translation(QmFiles ${TsFiles})
-#qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} screen_recorder.ts screen_recorder_ru.ts)
 
 add_executable(${PROJECT_NAME} ${screenrecorder_SRCS} ${engen_qm_file} ${QmFiles} ${FOLEYS_ARG_BUILD_TARGET})
-#set(QT_DEPLOY_TRANSLATIONS_DIR "share/info.you_ra.screen_recorder/translations")
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 add_dependencies(${PROJECT_NAME} libvncclient)
-#find_path("AVCODEC_INCLUDE_DIR" "libavcodec/avcodec.h" PATHS "${CMAKE_SOURCE_DIR}/FFmpegBuild/Cache/ffmpeg-4.4.4/libavcodec/")
-#find_library("AVCODEC_LIBRARY" "avcodec" PATHS "${CMAKE_SOURCE_DIR}/FFmpegBuild/Cache/ffmpeg-4.4.4/libavcodec/")
 
 foreach (libname IN ITEMS avutil swresample avcodec avformat swscale avdevice avfilter)
     string(TOUPPER ${libname} LIBNAMEUPPER)
-    message (STATUS "Name ${libname} and ${LIBNAMEUPPER}...")
     set("${LIBNAMEUPPER}_INCLUDE_DIR" "")
     set("${LIBNAMEUPPER}_LIBRARY" "")
     find_path(
@@ -192,17 +170,8 @@ foreach (libname IN ITEMS avutil swresample avcodec avformat swscale avdevice av
         "lib${libname}.so"
         PATHS ENV
         "${FFMPEG_SOURCE_DIR}")
-    message (STATUS "Also ${LIBNAMEUPPER_INCLUDE_DIR} and ${LIBNAMEUPPER_LIBRARY}")
-    message (STATUS "Path ${CMAKE_BINARY_DIR}/ffmpeg-4.4.4/ and ${CMAKE_BINARY_DIR}/ffmpeg-4.4.4/lib${libname}/")
-    #file(RENAME "${CMAKE_SOURCE_DIR}/FFmpegBuild/Cache/ffmpeg-4.4.4/lib${libname}/lib${libname}.so."
-    #            "${CMAKE_BINARY_DIR}/FFmpegBuild/ffmpeg/lib${libname}.so")
-    #install(FILES
-    #    "${CMAKE_BINARY_DIR}/ffmpeg-4.4.4/lib${libname}/lib${libname}.so"
-    #    DESTINATION ${AURORAOS_SHARED_LIBRARY_DIR}
-    #    )
     
     add_library(${libname} STATIC IMPORTED)
-    #add_dependencies("lib${LIBNAMEUPPER}.so" ${PROJECT_NAME})
     set_target_properties(${libname} PROPERTIES IMPORTED_LOCATION 
         "${CMAKE_BINARY_DIR}/ffmpeg-4.4.4/lib${libname}/lib${libname}.so")
     set("${libname}_path" "${CMAKE_BINARY_DIR}/ffmpeg-4.4.4/lib${libname}/lib${libname}.so")
@@ -215,19 +184,9 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 target_include_directories(${PROJECT_NAME} PRIVATE
     $<BUILD_INTERFACE:
     ${AURORA_INCLUDE_DIRS}
-    #    ${LIBAV_INCLUDE_DIRS}
-    #${VNC_INCLUDE_DIRS}
     "${LIBVNCCLIENT_DIRECTORY}/include/"
     "${LIBVNCCLIENT_DIR_CONFIG}/include/"
     ${FFMPEG_SOURCE_DIR}
-
-    #${AVCODEC_INCLUDE_DIR} 
-    #${AVFORMAT_INCLUDE_DIR}
-    #${AVFILTER_INCLUDE_DIR}
-    #${AVUTIL_INCLUDE_DIR} 
-    #${AVDEVICE_INCLUDE_DIR}
-    #${SWRESAMPLE_INCLUDE_DIR}
-    #${SWSCALE_INCLUDE_DIR}
 >)
 target_link_libraries(${PROJECT_NAME}
     Qt5::Quick
@@ -243,26 +202,10 @@ target_link_libraries(${PROJECT_NAME}
     "${FFMPEG_SOURCE_DIR}/libavdevice/libavdevice.so."
     "${FFMPEG_SOURCE_DIR}/libavfilter/libavfilter.so."
     "${LIBVNCCLIENT_DIRECTORY}/libvncclient.so"
-    #${avutil_path}
-    #${swresample_path}
-    #${avcodec_path}
-    #${avformat_path}
-    #${swscale_path}
-    #${avdevice_path}
-    #${avfilter_path}
-    #${AVCODEC_LIBRARY} 
-    #${AVFORMAT_LIBRARY} 
-    #${AVFILTER_LIBRARY} 
-    #${AVUTIL_LIBRARY} 
-    #${AVDEVICE_LIBRARY}
-    #${SWRESAMPLE_LIBRARY}
-    #${SWSCALE_LIBRARY}
 )
 
 
 foreach (libname IN ITEMS avutil swresample avcodec avformat swscale avdevice avfilter)
-    #file(COPY "${FFMPEG_SOURCE_DIR}/lib${libname}/lib${libname}.so."
-    #    DESTINATION "${CMAKE_BINARY_DIR}/ffmpeg-4.4.4/")
     install(FILES
         "${FFMPEG_SOURCE_DIR}/lib${libname}/lib${libname}.so."
         DESTINATION ${AURORAOS_SHARED_LIBRARY_DIR}

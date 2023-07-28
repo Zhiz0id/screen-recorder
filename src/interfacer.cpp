@@ -21,7 +21,7 @@
 #include "interfacer.h"
 
 
-Interfacer::Interfacer()//: recordT(new RecordThread("A"))
+Interfacer::Interfacer()
 {
     running = false;
     workable = false;
@@ -31,7 +31,6 @@ Interfacer::Interfacer()//: recordT(new RecordThread("A"))
     } else {
         workable = true;
     }
-    //connect(this, &Interfacer::state, this, &Interfacer::stateChanged);
 }
 
 bool Interfacer::isWorkable()
@@ -60,7 +59,6 @@ void Interfacer::setState(const State &state)
     }
 }
 
-
 Interfacer::Status Interfacer::status() const
 {
     if (recordT->isRunning()) {
@@ -77,11 +75,8 @@ void Interfacer::setStatus(const Status &status)
     }
 }
 
-
 void Interfacer::startRecording()
 {
-    //RecordThread* recordT = new RecordThread("A");
-    //this->recordT("A");
     qDebug() << "pre Interfacer::start()";
     if (!this->isWorkable()) {
         return;
@@ -121,7 +116,6 @@ void Interfacer::stopRecording()
     recordT->stopit();
     recordT->wait();
     recordT = NULL;
-    //recordT->terminate();
     this->setState(Interfacer::StoppedState);
 }
 
@@ -142,6 +136,7 @@ bool Interfacer::isRunning()
         return false;
     }
 }
+
 void Interfacer::removeFile(const QString &filePath)
 {
     QFile(filePath).remove();

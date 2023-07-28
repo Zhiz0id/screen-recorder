@@ -73,7 +73,6 @@ public:
     bool running;
     bool workable;
 public Q_SLOTS:
-//    void setRunning(bool running);
     bool isWorkable();
     void startRecording();
     void stopRecording();
@@ -83,7 +82,6 @@ public Q_SLOTS:
     void renameFile(const QString &oldPath, const QString &newPath);
 
 Q_SIGNALS:
-//    void runningChanged(bool running);
     void stateChanged(Interfacer::State state);
     void statusChanged(Interfacer::Status status);
 
