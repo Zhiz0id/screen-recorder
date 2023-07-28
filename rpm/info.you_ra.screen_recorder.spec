@@ -33,6 +33,7 @@ Screen recorder application
 %build
 %cmake
 %make_build
+if test -f %{name} ; then strip %{name}; fi
 
 %install
 rm -rf %{buildroot}
