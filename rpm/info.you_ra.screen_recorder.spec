@@ -4,7 +4,7 @@
 Name:       info.you_ra.screen_recorder
 
 Summary:    Screen recorder application
-Version:    0.1.302617
+Version:    0.1.302818
 Release:    1
 Group:      Qt/Qt
 License:    GPLv2
