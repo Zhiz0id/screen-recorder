@@ -24,7 +24,19 @@
 Interfacer::Interfacer()//: recordT(new RecordThread("A"))
 {
     running = false;
+    workable = false;
+    QTcpServer *server = new QTcpServer(this);
+    if (server->listen(QHostAddress("127.0.0.1"), quint16(5900))) {
+        server->close();
+    } else {
+        workable = true;
+    }
     //connect(this, &Interfacer::state, this, &Interfacer::stateChanged);
+}
+
+bool Interfacer::isWorkable()
+{
+    return workable;
 }
 
 QString Interfacer::location() const
@@ -71,6 +83,9 @@ void Interfacer::startRecording()
     //RecordThread* recordT = new RecordThread("A");
     //this->recordT("A");
     qDebug() << "pre Interfacer::start()";
+    if (!this->isWorkable()) {
+        return;
+    }
     if (this->state() != StoppedState) {
         return;
     }
@@ -95,6 +110,10 @@ void Interfacer::onFinishedRecording()
 
 void Interfacer::stopRecording()
 {
+    if (!this->isWorkable()) {
+        return;
+    }
+
     if(this->state() != RecordingState){
         return;
     }

@@ -27,6 +27,8 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include <QSettings>
+#include <QTcpServer>
+#include <QHostAddress>
 #include "recordthread.h"
 class Interfacer : public QObject
 {
@@ -69,8 +71,10 @@ public:
     Interfacer::Status status() const;
     void setStatus(const Status &status);
     bool running;
+    bool workable;
 public Q_SLOTS:
 //    void setRunning(bool running);
+    bool isWorkable();
     void startRecording();
     void stopRecording();
     bool isFinished();

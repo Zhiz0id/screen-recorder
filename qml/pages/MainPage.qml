@@ -98,8 +98,21 @@ Page {
             spacing: Theme.paddingLarge
 
 
+            Label {
+                objectName: "packageText"
+                color: palette.errorColor
+                font.pixelSize: Theme.fontSizeSmall
+                textFormat: Text.RichText
+                wrapMode: Text.WordWrap
+                text: qsTr("Warning! You may need to install lipstick2vnc package to be able to record screen.")
+                enabled: !srec.isWorkable()
+                visible: !srec.isWorkable()
+            }
+
             ButtonLayout {
                 Button {
+                    enabled: srec.isWorkable()
+                    visible: srec.isWorkable()
                     text: {
                         switch (srec.state) {
                             case Interfacer.StoppedState:

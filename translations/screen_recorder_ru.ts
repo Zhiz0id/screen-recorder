@@ -6,7 +6,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>About Application</source>
-        <translation>О приложении</translation>
+        <translation>О&#xa0;приложении</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="50"/>
@@ -20,7 +20,7 @@
     </message>
     <message>
         <source>3-Clause BSD License</source>
-        <translation type="vanished">Лицензия 3-Clause BSD</translation>
+        <translation type="vanished">Лицензия 3-Clause&#xa0;BSD</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="65"/>
@@ -87,12 +87,17 @@
         <translation>Запись - начать запись экрана. Настройки находятся в верхнем вытягиваемом меню.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="106"/>
+        <location filename="../qml/pages/MainPage.qml" line="107"/>
+        <source>Warning! You may need to install lipstick2vnc package to be able to record screen.</source>
+        <translation>Внимание! Вам может потребоваться установить lipstick2vnc пакет прежде чем записывать экран.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="119"/>
         <source>Record</source>
         <translation>Запись</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="108"/>
+        <location filename="../qml/pages/MainPage.qml" line="121"/>
         <source>Stop</source>
         <translation>Остановить</translation>
     </message>
@@ -196,7 +201,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="53"/>
         <source>%1:%2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="54"/>
