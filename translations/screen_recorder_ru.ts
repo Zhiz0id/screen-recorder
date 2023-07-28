@@ -6,7 +6,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>About Application</source>
-        <translation>О&#xa0;приложении</translation>
+        <translation>О приложении</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="50"/>
@@ -20,27 +20,23 @@
     </message>
     <message>
         <source>3-Clause BSD License</source>
-        <translation type="vanished">Лицензия 3-Clause&#xa0;BSD</translation>
+        <translation type="vanished">Лицензия 3-Clause BSD</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="65"/>
         <source>#licenseText</source>
-        <translation>&lt;pre&gt;&lt;i&gt;** Copyright (C) 2023 Yura Beznos at You-ra.info
-**
-** This program is free software; you can redistribute it and/or
-** modify it under the terms of the GNU General Public License
-** as published by the Free Software Foundation; either version 2
-** of the License, or (at your option) any later version.
-**
-** This program is distributed in the hope that it will be useful,
-** but WITHOUT ANY WARRANTY; without even the implied warranty of
-** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-** GNU General Public License for more details.
-**
-** You should have received a copy of the GNU General Public License
-** along with this program; if not, write an email to the license@you-ra.info
-*******************************************************************************/
-&lt;/pre&gt;</translation>
+        <translation>&lt;p&gt;&lt;i&gt;Copyright (C) 2023 Безнос Юрий&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;&lt;i&gt; Эта программа является свободной; Вы можете распространять ее и (или) изменять,
+ соблюдая условия Генеральной публичной лицензии GNU, опубликованной Фондом
+ свободного программного обеспечения; либо редакции 2 Лицензии, либо (на ваше
+ усмотрение) любой редакции, выпущенной позже. &lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;&lt;i&gt; Эта программа распространяется в надежде на то, что она окажется полезной, но
+ БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, включая подразумеваемую гарантию КАЧЕСТВА либо
+ ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННЫХ ЦЕЛЕЙ. Подробности содержатся в Генеральной
+ публичной лицензии GNU. &lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;&lt;i&gt; Вместе с этой программой должен распространяться экземпляр Генеральной публичной
+ лицензии GNU, если он отсутствует, сообщите об этом по электронной почте license@you-ra.info&lt;/i&gt;&lt;/p&gt;
+        </translation>
     </message>
 </context>
 <context>
