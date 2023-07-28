@@ -67,7 +67,7 @@ ExternalProject_Add(libvncclient
    SOURCE_DIR "${CMAKE_HOME_DIRECTORY}/libvncserver"
    BINARY_DIR "${LIBVNCCLIENT_DIRECTORY}"
    BUILD_IN_SOURCE 0
-   CONFIGURE_COMMAND cmake .
+   CONFIGURE_COMMAND cmake -DWITH_JPEG=OFF .
    BUILD_COMMAND cmake --build .
    INSTALL_COMMAND ""
    )
