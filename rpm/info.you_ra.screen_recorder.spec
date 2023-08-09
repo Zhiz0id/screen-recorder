@@ -34,6 +34,8 @@ Screen recorder application
 %cmake
 %make_build
 if test -f %{name} ; then strip %{name}; fi
+strip libvncserver/lib*.so*
+strip ffmpeg*/lib*/lib*.so.
 
 %install
 rm -rf %{buildroot}
